@@ -31,7 +31,7 @@ export class Multiselect extends React.Component {
     this.renderMultiselectContainer = this.renderMultiselectContainer.bind(this);
     this.renderSelectedList = this.renderSelectedList.bind(this);
     this.onRemoveSelectedItem = this.onRemoveSelectedItem.bind(this);
-    this.toggelOptionList = this.toggelOptionList.bind(this);
+    this.toggleOptionList = this.toggleOptionList.bind(this);
     this.onArrowKeyNavigation = this.onArrowKeyNavigation.bind(this);
     this.onSelectItem = this.onSelectItem.bind(this);
     this.filterOptionsByInput = this.filterOptionsByInput.bind(this);
@@ -403,7 +403,7 @@ export class Multiselect extends React.Component {
     }
   }
 
-  toggelOptionList() {
+  toggleOptionList() {
     this.setState({
       toggleOptionsList: !this.state.toggleOptionsList,
       highlightOption: this.props.avoidHighlightFirstOption ? -1 : 0
@@ -417,7 +417,7 @@ export class Multiselect extends React.Component {
       <div className={ms.multiSelectContainer} id="multiselectContainerReact" style={style['multiselectContainer']}>
         <div className={`${ms.searchWrapper} ${singleSelect ? ms.singleSelect : ''}`} 
           ref={this.searchWrapper} style={style['searchBox']} 
-          onClick={singleSelect ? this.toggelOptionList : () => {}}
+          onClick={singleSelect ? this.toggleOptionList : () => {}}
         >
           {this.renderSelectedList()}
           <input
@@ -427,8 +427,8 @@ export class Multiselect extends React.Component {
             id={id}
             onChange={this.onChange}
             value={inputValue}
-            onFocus={this.toggelOptionList}
-            onBlur={() => setTimeout(this.toggelOptionList, 200)}
+            onFocus={this.toggleOptionList}
+            onBlur={() => setTimeout(this.toggleOptionList, 200)}
             placeholder={singleSelect && selectedValues.length ? '' : placeholder}
             onKeyDown={this.onArrowKeyNavigation}
             style={style['inputField']}
